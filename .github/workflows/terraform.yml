@@ -21,7 +21,7 @@ jobs:
       # or actions like merging a PR
       - name: Terraform DEV Environment
         if: startsWith(github.ref, 'refs/heads/feature/')
-        uses: ./.github/actions/terraform-deploy
+        uses: ./.github/actions/terraform-deploy.yml
         with:
           working_directory: 'terraform/workspaces/dev/api'
 
