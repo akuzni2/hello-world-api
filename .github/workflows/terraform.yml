@@ -22,7 +22,7 @@ jobs:
       # by substituting different variables and triggering off of branch names
       # or actions like merging a PR
       - name: Terraform DEV Environment
-        if: startsWith(github.ref, 'refs/heads/develop/')
+        if: startsWith(github.ref, 'refs/heads/feature/')
         uses: ./.github/actions/terraform-job
         with:
           working_directory: 'terraform/workspaces/dev/api'
