@@ -1,9 +1,16 @@
 name: 'TerraformFlow'
 description: 'A reusable job to perform Terraform init, plan, and apply with input variables'
+
 inputs:
   working_directory:
     description: 'The directory containing the Terraform configuration'
     required: true
+#on:
+#  workflow_call:
+#    inputs:
+#      working_directory:
+#        description: 'The directory containing the Terraform configuration'
+#        required: true
 
 
 runs:
