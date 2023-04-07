@@ -21,7 +21,7 @@ jobs:
       # or actions like merging a PR
       - name: Terraform DEV Environment
         if: startsWith(github.ref, 'refs/heads/feature/')
-        uses: /home/runner/work/cointracker-hello-world-api/.github/actions/terraform-deploy.yml
+        uses: ./home/runner/work/cointracker-hello-world-api/.github/actions/terraform-deploy.yml
         with:
           working_directory: 'terraform/workspaces/dev/api'
 
