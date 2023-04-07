@@ -1,4 +1,4 @@
-name: 'Terraform Workflow'
+name: 'Terraform'
 
 on: [push]
 
@@ -6,22 +6,42 @@ permissions:
   contents: read
 
 jobs:
-  terraform-development:
-    name: 'Terraform'
+  terraform:
+    name: 'Terraform Dev'
     runs-on: ubuntu-latest
-    environment: Development
+    environment: development
 
     steps:
-
+      # Checkout the repository to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Allow to run job and deploy to diff environments
-      # by substituting different variables and triggering off of branch names
-      # or actions like merging a PR
-      - name: Terraform DEV Environment
-        if: startsWith(github.ref, 'refs/heads/feature/')
-        uses: ./.github/actions/terraform-deploy.yml
-        with:
-          working_directory: 'terraform/workspaces/dev/api'
+      # Install the latest version of Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
 
+      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+      - name: Terraform Init
+        run: |
+          cd terraform/workspaces/dev/api
+          terraform init
+
+      # Checks that all Terraform configuration files adhere to a canonical format
+      - name: Terraform Format
+        run: |
+          cd terraform/workspaces/dev/api
+          terraform fmt -check
+
+      # Generates an execution plan for Terraform
+      - name: Terraform Plan
+        run: |
+          cd terraform/workspaces/dev/api
+          terraform plan -input=false
+
+        # On push to "main", build or change infrastructure according to Terraform configuration files
+        # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+        run: |
+          cd terraform/workspaces/dev/api
+          terraform apply -auto-approve -input=false
