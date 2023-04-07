@@ -8,10 +8,10 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
+  terraform-development:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: production
+    environment: Development
 
     steps:
 
@@ -23,7 +23,7 @@ jobs:
       # or actions like merging a PR
       - name: Terraform DEV Environment
         if: github.ref == 'refs/heads/develop'
-        uses: ./cointracker-hello-world-api/.github/actions/terraform-job
+        uses: ./.github/actions/terraform-job
         with:
           working_directory: 'terraform/workspaces/dev/api'
 
