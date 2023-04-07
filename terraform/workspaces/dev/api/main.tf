@@ -1,4 +1,4 @@
-module "video_ingest_nextgen" {
+module "cointracker_api" {
   source = "../../../modules/api"
 
   environment = var.environment
