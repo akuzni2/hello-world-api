@@ -1,0 +1,38 @@
+name: 'TerraformFlow'
+description: 'A reusable job to perform Terraform init, plan, and apply with input variables'
+inputs:
+  working_directory:
+    description: 'The directory containing the Terraform configuration'
+    required: true
+
+
+runs:
+  using: "composite"
+  steps:
+    # Install the latest version of Terraform CLI
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Terraform Init
+      run: |
+        cd ${{ inputs.working_directory }}
+        terraform init
+      shell: bash
+
+    - name: Terraform Format
+      run: |
+        cd ${{ inputs.working_directory }}
+        terraform fmt -check
+      shell: bash
+
+    - name: Terraform Plan
+      run: |
+        cd ${{ inputs.working_directory }}
+        terraform plan -input=false
+      shell: bash
+
+    - name: Terraform Apply
+      run: |
+        cd ${{ inputs.working_directory }}
+        terraform apply -auto-approve -input=false
+      shell: bash

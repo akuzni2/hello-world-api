@@ -13,3 +13,81 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+.env
+
+# Golang
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.o
+*.a
+*.swp
+/vendor/
+/bin/
+/obj/
+.DS_Store
+
+# Java
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.zip
+*.tar.gz
+hs_err_pid*
+target/
+.classpath
+.settings/
+.project
+.factorypath
+.springBeans
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.log
+*.sql
+*.sqlite
+.Python
+env/
+venv/
+ENV/
+.build/
+devel/
+dist/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.gz
+*.whl
+*.pth
+
+# IDEs and editors
+/.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+*.bak
+*.sublime*
+*.iml
+*.ipr
+*.iws
+*.tmproj
+*.tmproject
+*.komodoproject
