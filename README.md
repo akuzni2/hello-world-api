@@ -17,7 +17,7 @@ Apologies I wasn't able to get DNS + Domain Name Provisioned in time to give it 
 - Github Actions to build and deploy terraform to AWS
 - Go to create a very small + fast deployable lambda function artifact to return the payload
 
-
+![Layout](./img/arch.png)
 
 # Current Deployment steps
 1. create a branch prefixed with feature/
