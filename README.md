@@ -1,11 +1,17 @@
 # cointracker hello world API
 
 ## Immediate Demo of Working API
+
+With Domain
 ```bash
-curl https://xfe2ggc5xh.execute-api.us-east-1.amazonaws.com/v1/hello-world
+curl https://ak-ct-demo.link/v1/hello-world
 ```
 
-Apologies I wasn't able to get DNS + Domain Name Provisioned in time to give it a better name!
+Straight to API Gateway
+```bash
+curl https://mbfxms3nfl.execute-api.us-east-1.amazonaws.com/v1/hello-world
+```
+
 
 ### Notion document where I started taking notes
 https://www.notion.so/Alex-Kuznicki-Platform-Engineer-4c08323d8b214fe18c633bd263dfd4d0
