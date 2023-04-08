@@ -30,3 +30,14 @@ aws s3api put-bucket-versioning \
   --versioning-configuration Status=Enabled
 ```
 
+# Components Built
+
+- API Gateway for routing traffic to lambda function
+- AWS Lambda Function as deployable artifact (Go executable)
+- IAM Role for Github Actions to allow minimum deployment privileges
+- IAM Role for Lambda to allow minimum privileges to other resources
+- Terraform to manage infrastructure
+- Github Actions to build and deploy terraform to AWS
+- Go to create a very small + fast deployable lambda function artifact to return the payload
+
+
