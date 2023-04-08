@@ -5,8 +5,7 @@
 curl https://xfe2ggc5xh.execute-api.us-east-1.amazonaws.com/v1/hello-world
 ```
 
-I wasn't able to get DNS + Domain Name Provisioned to give it a better name.
-
+Apologies I wasn't able to get DNS + Domain Name Provisioned in time to give it a better name!
 
 # Components Covered
 
@@ -14,17 +13,28 @@ I wasn't able to get DNS + Domain Name Provisioned to give it a better name.
 - AWS Lambda Function as deployable artifact (Go executable)
 - IAM Role for Github Actions to allow minimum deployment privileges
 - IAM Role for Lambda to allow minimum privileges to other resources
-- Terraform to manage infrastructure
+- Terraform to manage infrastructure (organized to accomdate multiple environments)
 - Github Actions to build and deploy terraform to AWS
 - Go to create a very small + fast deployable lambda function artifact to return the payload
 
+# Current Deployment steps
+1. create a branch prefixed with feature/
+2. Make changes to terraform or Go API func
+3. Push changes
+4. Enjoy deployment
+5. Merge your changes to main when done
+
+
 # Small Todo + Improvements
+- abstract deployment pipeline to allow for deploying to different environments
+- Make Github actions pipeline use IAM role to get temp credentials instead of keys from Env var
 - Route53 Domain Name + ACM Certificate
 - Restrict API traffic with API Key + configure throttling
 - Request Latency + Error monitoring
 - Implement some centralizd logging
 
-# Deployment Steps
+
+# Setup from Scratch Steps (if building in a new AWS account or environment)
 
 Step 0. Be in the AWS Account of the environment to set this up (Dev, Stg, Prd, etc..)
 Step 1. Provision a Temporary User
@@ -56,6 +66,8 @@ aws s3api put-bucket-versioning \
   --versioning-configuration Status=Enabled
 ```
 
-
+## Deploying First Steps on CICD
+1. You'll need to first deploy the terraform by deploying the code to github and running the TF pipeline
+2. Run the code pipeline after it assumes the lambda func is there already
 
 

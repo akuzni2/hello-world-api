@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#GOOS=linux go build -o api-lambda-function main.go
-#zip api-lambda-function.zip api-lambda-function
+GOOS=linux go build -o api-lambda-function main.go
+zip api-lambda-function.zip api-lambda-function
 
 aws lambda update-function-code \
     --function-name ct_ak_hello_world_api \

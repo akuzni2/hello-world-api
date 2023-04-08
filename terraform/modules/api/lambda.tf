@@ -11,7 +11,7 @@ module "api_lambda" {
   runtime       = "go1.x"
 
   create_package         = false
-  local_existing_package = "${path.module}/api-lambda.zip"
+  local_existing_package = "${path.module}/api-lambda-initial.zip"
 
   ignore_source_code_hash = true
   tags                    = var.tags
