@@ -12,7 +12,17 @@ https://www.notion.so/Alex-Kuznicki-Platform-Engineer-4c08323d8b214fe18c633bd263
 
 # API Design Options
 Originally started documenting in Notion - couldn't copy it over to markdown.
+Here is some of my assumptions/thoughts about this project and why I chose what I did.
 ![Layout](./img/design-opts.png)
+
+## Design Choice:
+
+Based on the options laid out above I will choose to go with a **Serverless Function** implementation for the main reasons:
+
+- This is a demo “hello world” API with expected low volume of traffic and unpredictable
+- Less components involved which given an asked 4 hour upper limit on the project it will allow for developing the End-End solution first to get an MVP working.
+    - If time allows we can expand to a more cost effective solution if we assume the API will receive higher levels of traffic. Could **Dockerize** a **REST AP**I or **gRPC API** and deploy it
+
 
 # Components Covered in this Demo Project
 
