@@ -28,7 +28,7 @@ resource "aws_apigatewayv2_domain_name" "hello_world_api" {
 
 resource "aws_route53_record" "record" {
   zone_id = data.aws_route53_zone.my_zone.id
-  name    = "www.${local.domain_name}"
+  name    = "${local.domain_name}"
   type    = "A"
 
   alias {
