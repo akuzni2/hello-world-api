@@ -13,3 +13,8 @@ variable "tags" {
   type        = map(any)
   default     = {}
 }
+
+variable "initialize_lambda_empty" {
+  description = "Init lambda (chicken/egg) problem"
+  type        = bool
+}

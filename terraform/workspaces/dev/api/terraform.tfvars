@@ -6,3 +6,6 @@ tags = {
   application = "helloworld-api"
   environment = "dev"
 }
+
+# set false after init - deploy lambda updates from CICD pipeline
+initialize_lambda_empty = true

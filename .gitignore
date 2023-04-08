@@ -37,7 +37,6 @@
 *.ctxt
 *.jar
 *.war
-*.zip
 *.tar.gz
 hs_err_pid*
 target/
