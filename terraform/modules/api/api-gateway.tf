@@ -1,44 +1,35 @@
-module "api_gateway" {
-  source = "terraform-aws-modules/apigateway-v2/aws"
-  version = "2.2.2"
-  name          = "ct-ak-api-hello-world-http"
-  description   = "My API"
+resource "aws_apigatewayv2_api" "hello_world_api" {
+  name          = "ct-ak-api-hello-world"
   protocol_type = "HTTP"
+}
 
-  cors_configuration = {
-    allow_headers = [
-      "content-type", "x-amz-date", "authorization", "x-api-key", "x-amz-security-token", "x-amz-user-agent"
-    ]
-    allow_methods = ["*"]
-    allow_origins = ["*"]
-  }
+resource "aws_apigatewayv2_integration" "example" {
+  api_id           = aws_apigatewayv2_api.hello_world_api.id
+  integration_type = "AWS_PROXY"
 
-  #  domain_name                 = local.domain_name
-  #  domain_name_certificate_arn = module.acm.acm_certificate_arn
+  integration_uri = module.api_lambda.lambda_function_arn
+}
 
-  default_route_settings = {
-    detailed_metrics_enabled = true
-    throttling_burst_limit   = 100
-    throttling_rate_limit    = 100
-  }
+resource "aws_apigatewayv2_route" "example" {
+  api_id    = aws_apigatewayv2_api.hello_world_api.id
+  route_key = "GET /v1/hello-world"
+  target    = "integrations/${aws_apigatewayv2_integration.example.id}"
+}
+resource "aws_lambda_permission" "apigw" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.api_lambda.lambda_function_arn
+  principal     = "apigateway.amazonaws.com"
 
-  integrations = {
+  source_arn = "${aws_apigatewayv2_api.hello_world_api.execution_arn}/*/*"
+}
 
-    "ANY /" = {
-      lambda_arn             = module.api_lambda.lambda_function_arn
-      payload_format_version = "2.0"
-      timeout_milliseconds   = 12000
-    }
+resource "aws_apigatewayv2_stage" "example" {
+  api_id = aws_apigatewayv2_api.hello_world_api.id
+  name   = "$default"
+  auto_deploy = true
+}
 
-    "$default" = {
-      lambda_arn = module.api_lambda.lambda_function_arn
-      #      tls_config = jsonencode({
-      #        server_name_to_verify = local.domain_name
-      #      })
-
-    }
-
-  }
-
-  tags = var.tags
+output "api_gateway_invoke_url" {
+  value = aws_apigatewayv2_api.hello_world_api.api_endpoint
 }
