@@ -31,6 +31,8 @@
 /obj/
 .DS_Store
 
+.terraform/
+
 # Java
 *.class
 *.log
