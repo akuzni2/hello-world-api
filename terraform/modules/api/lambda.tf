@@ -59,7 +59,7 @@ data "aws_iam_policy_document" "iam_policy_document" {
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  name   = "mr_reminder_lambda_policy"
+  name   = "api_lambda_policy"
   policy = data.aws_iam_policy_document.iam_policy_document.json
 }
 
