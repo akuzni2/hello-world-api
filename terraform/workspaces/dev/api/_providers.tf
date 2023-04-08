@@ -1,4 +1,5 @@
 terraform {
+  required_version = ">=1.4.4"
   backend "s3" {
     bucket         = "ct-ak-api-us-east-1-tf-state"
     key            = "dev/us-east-1/terraform.tfstate"
