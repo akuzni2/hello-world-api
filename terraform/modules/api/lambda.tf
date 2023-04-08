@@ -1,5 +1,5 @@
 locals {
-  app_name = "cointracker-api"
+  app_name = "ct-ak-api"
 }
 
 resource "aws_iam_role" "lambda_role" {
