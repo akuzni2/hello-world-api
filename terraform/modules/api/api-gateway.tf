@@ -1,5 +1,6 @@
 module "api_gateway" {
-  source = "terraform-aws-modules/terraform-aws-apigateway-v2"
+  source = "terraform-aws-modules/apigateway-v2/aws"
+  version = "2.2.2"
   name          = "ct-ak-api-hello-world-http"
   description   = "My API"
   protocol_type = "HTTP"
