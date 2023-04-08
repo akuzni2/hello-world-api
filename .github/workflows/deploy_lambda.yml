@@ -1,12 +1,10 @@
 name: Deploy Go API Lambda Function
 
-#on:
-#  workflow_run:
-#    workflows: ["Terraform"]
-#    types:
-#      - completed
-
-on: [ push ]
+on:
+  workflow_run:
+    workflows: ["Terraform"]
+    types:
+      - completed
 
 jobs:
   deploy:
