@@ -33,11 +33,12 @@ Based on the options laid out above I will choose to go with a **Serverless Func
 # Components Covered in this Demo Project
 
 - Organized Terraform to manage infrastructure (to accommodate multiple environments)
-- Github Actions pipeline to automatically build and deploy terraform to AWS
+- Github Actions pipeline to automatically init, plan, & apply terraform to AWS
 - Github Actions pipeline to automatically build and deploy Go code to AWS to serve API traffic
-- API Gateway configured with route to lambda function
+- API Gateway configured with route to lambda function (Terraform)
+- Route53 DNS + A record setup to provide a static API name (Terraform)
 - AWS Lambda Function as deployable artifact (Go executable)
-- IAM Role for Github Actions to allow minimum deployment privileges
+- IAM Role for Github Actions to allow minimum deployment privileges (Terraform)
 
 ![Layout](./img/arch.png)
 
@@ -93,5 +94,8 @@ aws s3api put-bucket-versioning \
 ## Deploying First Steps on CICD
 1. You'll need to first deploy the terraform by deploying the code to github and running the TF pipeline
 2. Run the code pipeline after it assumes the lambda func is there already
+
+### Domain Name
+1. Purchase a domain on AWS Route53 or import existing one 
 
 
