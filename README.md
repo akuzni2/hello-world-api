@@ -26,13 +26,12 @@ Based on the options laid out above I will choose to go with a **Serverless Func
 
 # Components Covered in this Demo Project
 
-- API Gateway for routing traffic to lambda function
+- Organized Terraform to manage infrastructure (to accommodate multiple environments)
+- Github Actions pipeline to automatically build and deploy terraform to AWS
+- Github Actions pipeline to automatically build and deploy Go code to AWS to serve API traffic
+- API Gateway configured with route to lambda function
 - AWS Lambda Function as deployable artifact (Go executable)
 - IAM Role for Github Actions to allow minimum deployment privileges
-- IAM Role for Lambda to allow minimum privileges to other resources
-- Terraform to manage infrastructure (organized to accomdate multiple environments)
-- Github Actions to build and deploy terraform to AWS
-- Go to create a very small + fast deployable lambda function artifact to return the payload
 
 ![Layout](./img/arch.png)
 
