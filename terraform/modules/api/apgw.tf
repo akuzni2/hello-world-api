@@ -1,9 +1,9 @@
-resource "aws_apigatewayv2_api" "hello_world_api" {
-  name          = "ct-ak-api-hello-world"
+resource "aws_apigatewayv2_api" "hello_world_api_v2" {
+  name          = "ct-ak-api-hello-world-v2"
   protocol_type = "HTTP"
 }
 
-resource "aws_apigatewayv2_integration" "example" {
+resource "aws_apigatewayv2_integration" "example_V2" {
   api_id           = aws_apigatewayv2_api.hello_world_api_v2.id
   integration_type = "AWS_PROXY"
 
@@ -13,7 +13,7 @@ resource "aws_apigatewayv2_integration" "example" {
 resource "aws_apigatewayv2_route" "example" {
   api_id    = aws_apigatewayv2_api.hello_world_api_v2.id
   route_key = "GET /v1/hello-world"
-  target    = "integrations/${aws_apigatewayv2_integration.example.id}"
+  target    = "integrations/${aws_apigatewayv2_integration.example_V2.id}"
 }
 resource "aws_lambda_permission" "apigw" {
   statement_id  = "AllowAPIGatewayInvoke"
@@ -24,12 +24,9 @@ resource "aws_lambda_permission" "apigw" {
   source_arn = "${aws_apigatewayv2_api.hello_world_api_v2.execution_arn}/*/*"
 }
 
-resource "aws_apigatewayv2_stage" "hello_world_api" {
+resource "aws_apigatewayv2_stage" "hello_world_api_v2" {
   api_id      = aws_apigatewayv2_api.hello_world_api_v2.id
   name        = "$default"
   auto_deploy = true
 }
 
-output "api_gateway_invoke_url" {
-  value = aws_apigatewayv2_api.hello_world_api_v2.api_endpoint
-}
