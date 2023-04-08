@@ -34,11 +34,6 @@ module "api_lambda" {
   ignore_source_code_hash = true
 }
 
-// log group
-resource "aws_cloudwatch_log_group" "example" {
-  name              = "/aws/lambda/${module.api_lambda.lambda_function_name}"
-  retention_in_days = 14
-}
 
 #data "aws_iam_policy_document" "iam_policy_document" {
 #
