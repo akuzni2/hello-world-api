@@ -1,4 +1,4 @@
-# cointracker-hello-world
+# cointracker hello world API
 
 ## Immediate Demo of Working API
 ```bash
@@ -7,7 +7,14 @@ curl https://xfe2ggc5xh.execute-api.us-east-1.amazonaws.com/v1/hello-world
 
 Apologies I wasn't able to get DNS + Domain Name Provisioned in time to give it a better name!
 
-# Components Covered
+### Notion document where I started taking notes
+https://www.notion.so/Alex-Kuznicki-Platform-Engineer-4c08323d8b214fe18c633bd263dfd4d0
+
+# API Design Options
+Originally started documenting in Notion - couldn't copy it over to markdown.
+![Layout](./img/design-opts.png)
+
+# Components Covered in this Demo Project
 
 - API Gateway for routing traffic to lambda function
 - AWS Lambda Function as deployable artifact (Go executable)
