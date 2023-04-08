@@ -19,11 +19,6 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
-# only used to initialize
-data "archive_file" "dummy" {
-  type        = "zip"
-  output_path = "api-lambda.zip"
-}
 
 module "api_lambda" {
   source = "terraform-aws-modules/lambda/aws"
