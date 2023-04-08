@@ -24,9 +24,9 @@ resource "aws_lambda_permission" "apigw" {
   source_arn = "${aws_apigatewayv2_api.hello_world_api.execution_arn}/*/*"
 }
 
-resource "aws_apigatewayv2_stage" "example" {
-  api_id = aws_apigatewayv2_api.hello_world_api.id
-  name   = "$default"
+resource "aws_apigatewayv2_stage" "hello_world_api" {
+  api_id      = aws_apigatewayv2_api.hello_world_api.id
+  name        = "$default"
   auto_deploy = true
 }
 
