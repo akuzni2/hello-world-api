@@ -31,7 +31,6 @@ module "api_lambda" {
   create_package         = false
   local_existing_package = "api-lambda.zip"
 
-  role_name               = "ct-ak-api-lambda-role"
   ignore_source_code_hash = true
 }
 
