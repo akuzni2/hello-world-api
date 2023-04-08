@@ -26,7 +26,7 @@ resource "aws_lambda_permission" "apigw_v2" {
 
 resource "aws_apigatewayv2_stage" "hello_world_api_v2" {
   api_id      = aws_apigatewayv2_api.hello_world_api_v2.id
-  name        = "$default"
+  name        = "dev"
   auto_deploy = true
 }
 
