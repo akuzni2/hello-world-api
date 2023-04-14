@@ -13,11 +13,7 @@ curl https://mbfxms3nfl.execute-api.us-east-1.amazonaws.com/v1/hello-world
 ```
 
 
-### Notion document where I started taking notes
-https://www.notion.so/Alex-Kuznicki-Platform-Engineer-4c08323d8b214fe18c633bd263dfd4d0
-
 # API Design Options
-Originally started documenting in Notion - couldn't copy it over to markdown.
 Here is some of my assumptions/thoughts about this project and why I chose what I did.
 ![Layout](./img/design-opts.png)
 
